@@ -29,8 +29,8 @@ class SendMail extends Mailable
     public function build()
     {
       return $this->view('emails.test')
-                  ->from('meganeno73@gmail.com','Test')
-                  ->subject('This is a test mail')
+                  ->from('meganeno73@gmail.com','今日のtodoをお知らせ')
+                  ->subject('todoをチェックして１日を始めよう！')
                   ->with(['todo' => $this->todo]);
     }
 }
