@@ -16,9 +16,9 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($todo)
     {
-        //
+        $this->todo = $todo;
     }
 
     /**
@@ -30,6 +30,7 @@ class SendMail extends Mailable
     {
       return $this->view('emails.test')
                   ->from('meganeno73@gmail.com','Test')
-                  ->subject('This is a test mail');
+                  ->subject('This is a test mail')
+                  ->with(['todo' => $this->todo]);
     }
 }

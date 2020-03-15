@@ -8,6 +8,8 @@ use App\Mail\SendMail;
 
 use Mail;
 
+use App\Todo;
+
 class MailSendController extends Controller
 {
   public function send(){
@@ -19,7 +21,9 @@ class MailSendController extends Controller
       ]
   ];
 
-  Mail::to($to)->send(new SendMail());
+  $todo = Todo::all();
+
+  Mail::to($to)->send(new SendMail($todo));
   return redirect('admin/todo/');
   }
 }
