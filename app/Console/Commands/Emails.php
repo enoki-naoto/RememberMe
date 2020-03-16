@@ -54,7 +54,6 @@ class Emails extends Command
         $todo = Todo::all();
 
         Mail::to($to)->send(new SendMail($todo));
-        return redirect('admin/todo/');
 
     }
 }
