@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('auth/register');
+    return view('auth/login');
 });
 
 Route::group(['prefix' => 'admin'], function() {
@@ -15,5 +15,5 @@ Route::group(['prefix' => 'admin'], function() {
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Admin\TodoController@index')->middleware('auth');
 Route::get('/mail', 'MailSendController@send');
