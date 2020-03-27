@@ -15,9 +15,9 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="content">todo</label>
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <input type="text" class="form-control" name="content" value="{{ old('content') }}">
+                            <input type="hidden" name="user_id" value="{{ $auth->id }}">
                         </div>
                     </div>
                     {{ csrf_field() }}

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Todo;
+use Auth;
 
 class TodoController extends Controller
 {
     public function add()
     {
-      return view('admin.todo.create');
+      $auth = Auth::user();
+      return view('admin.todo.create', ['auth' => $auth]);
     }
 
     public function create(Request $request)
@@ -52,13 +54,8 @@ class TodoController extends Controller
 
     public function index(Request $request)
     {
-        $cond_title = $request->cond_title;
-        if ($cond_title != '') {
-            $posts = Todo::where('content', $cond_title)->get();
-        } else {
-            $posts = Todo::all();
-        }
-        return view('admin.todo.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+        $auth = Auth::user();
+        return view('admin.todo.index', ['auth' => $auth]);
     }
 
 }

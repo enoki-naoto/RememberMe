@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+  @guest
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -62,4 +63,14 @@
             </div>
         </div>
     </div>
+  @endguest
+  @auth
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+              <a href="{{ action('Admin\TodoController@index') }}" role="button" class="btn btn-primary">ログイン済み todo一覧へ</a>
+            </div>
+        </div>
+    </div>
+  @endauth
 @endsection
