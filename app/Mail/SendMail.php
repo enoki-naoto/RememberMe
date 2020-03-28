@@ -16,9 +16,9 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct($todo)
+    public function __construct($user)
     {
-        $this->todo = $todo;
+        $this->user = $user;
     }
 
     /**
@@ -31,6 +31,6 @@ class SendMail extends Mailable
       return $this->view('emails.test')
                   ->from('meganeno73@gmail.com','今日のtodoをお知らせ')
                   ->subject('todoをチェックして１日を始めよう！')
-                  ->with(['todo' => $this->todo]);
+                  ->with(['user' => $this->user]);
     }
 }

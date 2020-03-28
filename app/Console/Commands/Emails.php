@@ -8,6 +8,8 @@ use App\Mail\SendMail;
 
 use App\Todo;
 
+use App\User;
+
 use Mail;
 
 class Emails extends Command
@@ -44,16 +46,8 @@ class Emails extends Command
      */
     public function handle()
     {
-        $to = [
-            [
-                'email' => 'meganeno73@gmail.com',
-                'name' => 'Test',
-            ]
-        ];
+      $user = User::find(3);
 
-        $todo = Todo::all();
-
-        Mail::to($to)->send(new SendMail($todo));
-
+      Mail::to($user)->send(new SendMail($user));
     }
 }

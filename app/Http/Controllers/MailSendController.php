@@ -10,20 +10,15 @@ use Mail;
 
 use App\Todo;
 
+use App\User;
+
 class MailSendController extends Controller
 {
   public function send(){
 
-  $to = [
-      [
-          'email' => 'meganeno73@gmail.com',
-          'name' => 'Test',
-      ]
-  ];
+  $user = User::find(3);
 
-  $todo = Todo::all();
-
-  Mail::to($to)->send(new SendMail($todo));
+  Mail::to($user)->send(new SendMail($user));
   return redirect('admin/todo/');
   }
 }
