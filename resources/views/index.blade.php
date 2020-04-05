@@ -1,22 +1,36 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-10">
-      <table class="table table-striped table-dark mt-5">
-        <tr>
-          <th>タイトル</th>
-          <th>いいね数</th>
-          <th>コメント数</th>
-          <th>作成日</th>
-        </tr>
-        @foreach($posts as $post)
-        <tr>
-          <td>{{$post['title']}}</td>
-          <td>{{$post['likes_count']}}</td>
-          <td>{{$post['comments_count']}}</td>
-          <td>{{$post['created_at']}}</td>
-        </tr>
-        @endforeach
-      </table>
+@extends('layouts.admin')
+@section('title', 'Qiita php記事一覧')
+
+@section('content')
+    <div class="container">
+        <div class="row mb-2">
+            <h2>記事一覧</h2>
+        </div>
+        <div class="row">
+            <div class="list-news col-md-12 mx-auto">
+                <div class="row">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th width="50%">記事タイトル</th>
+                                <th width="10%">いいね数</th>
+                                <th width="10%">コメント数</th>
+                                <th width="30%">作成日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($posts as $post)
+                                <tr>
+                                    <th>{{$post['title']}}</th>
+                                    <td>{{$post['likes_count']}}</td>
+                                    <td>{{$post['comments_count']}}</td>
+                                    <td>{{date('Y年m月d日',  strtotime($post['created_at']))}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+@endsection

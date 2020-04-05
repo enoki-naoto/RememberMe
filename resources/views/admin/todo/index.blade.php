@@ -7,8 +7,11 @@
             <h2>todo一覧</h2>
         </div>
         <div class="row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-2 mb-3">
                 <a href="{{ action('Admin\TodoController@add') }}" role="button" class="btn btn-primary">新規作成</a>
+            </div>
+            <div class="col -md-1 mb-3">
+              <a href="{{ action('Api\PostController@index') }}" role="button" class="btn btn-danger">Qiita記事一覧</a>
             </div>
         </div>
         <div class="row">
