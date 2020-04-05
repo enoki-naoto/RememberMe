@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Api\PostController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +17,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::group(['middleware' => ['api']], function(){
+//   Route::resource('/', 'Api\PostController');
+// });
+Route::get('/', 'Api\PostController@index');
